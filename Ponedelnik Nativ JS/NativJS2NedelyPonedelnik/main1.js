@@ -60,7 +60,7 @@ const getSimpleStudents = (array) => {
 }
 console.log(getSimpleStudents(students))                         // вывод результата в консоль
 
-// самодельный метод map
+// самодельный метод map -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 const selfMadeMap = (array, elMapFn) => {
     const result = []
@@ -84,6 +84,33 @@ const selfMadeFilter = (array, conditionFn) => {  // true || false
     }
     return result
 }
-console.log(students.filter(st=>st.scores>=100))                                         // это метод filter с условием
-console.log(selfMadeFilter(students, (st=>st.scores>=100)))               //  а это самодельный метод filter
+console.log(students.filter(st => st.scores >= 100))                                         // это метод filter с условием
+console.log(selfMadeFilter(students, (st => st.scores >= 100)))               //  а это самодельный метод filter
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// воспроизведение работы метода push -----------------------------------------------------------------------------------------------------------------------------
+const selfMadePush = (array, ...els) => {              // ...els - рест оператор он раскукоживает функцию и остальные параметры
+    console.log(els)
+    for (let i = 0; i < els.length; i++) {
+        array[array.length] = els[i]
+    }
+    const result = [...array, ...els]
+    return result.length
+}
+const arr = [1, 2, 3, 4, 5]
+//console.log(selfMadePush(arr, 6, 7, 8))
+console.log(arr.push(6, 7, 8))
+console.log(arr)
+
+const selfMadeIncludes = (array, value) => {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value){
+            return true
+        }
+    }
+    return false
+}
+console.log(arr.includes(4))                                 // это вызов метода массива через точку
+console.log(selfMadeIncludes(arr, 4))         // это самодельный вызов аналогичного метода
