@@ -114,3 +114,6 @@ const selfMadeIncludes = (array, value) => {
 }
 console.log(arr.includes(4))                                 // это вызов метода массива через точку
 console.log(selfMadeIncludes(arr, 4))         // это самодельный вызов аналогичного метода
+
+
+// теперь зайти на сайт mdn и повторить какой-нибудь метод массива
