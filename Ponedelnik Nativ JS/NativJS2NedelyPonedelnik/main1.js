@@ -63,7 +63,7 @@ console.log(getSimpleStudents(students))                         // вывод �
 // самодельный метод map
 
 const selfMadeMap = (array, elMapFn) => {
-    const result=[]
+    const result = []
     for (let i = 0; i < array.length; i++) {                          // тело функции её работы
         const newValue = elMapFn(array[i])
         result[i] = newValue
@@ -71,6 +71,19 @@ const selfMadeMap = (array, elMapFn) => {
     return result
 }
 console.log(students.map((st) => ({name: st.name, scores: st.scores})))
-console.log(selfMadeMap(students, (st)=>({name: st.name, scores: st.scores})))
+console.log(selfMadeMap(students, (st) => ({name: st.name, scores: st.scores})))
 
+// filter самодельный ---------------------------------------------------------------------------------------------------------------------------------------
+
+const selfMadeFilter = (array, conditionFn) => {  // true || false
+    const result = []
+    for (let i = 0; i < array.length; i++) {
+        if (conditionFn(array[i]) === true) {
+            result.push(array[i])
+        }
+    }
+    return result
+}
+console.log(students.filter(st=>st.scores>=100))                                         // это метод filter с условием
+console.log(selfMadeFilter(students, (st=>st.scores>=100)))               //  а это самодельный метод filter
 
