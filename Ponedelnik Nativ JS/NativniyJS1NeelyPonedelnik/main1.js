@@ -61,8 +61,52 @@ console.log(5 < 5);             // false
 console.log(5 >= 5);            // true
 console.log(5 <= 5)          // true
 
-console.log('5px' > 3);         // false
+console.log('5px' > 3);         // false  // 5px не преобразоваться  в число и получается Nan
 console.log('5px' < 10);        // false
-console.log('A' > 'a')          // false
+console.log('A' > 'a')          // false - маленькие символы юникода идут после больших тоесть его порядковый номер в пересчёте на цифры больше
 console.log('B' < 'b')          // true
 
+console.log('5px' > 'pxyt')
+
+// логические операторы
+// && - запинается на лжи :)
+// || - запинается на правде :)
+
+// console.log(10 && 2)              // 2
+// console.log(0 && 1)                // 0
+// console.log(23 || 7)               // 23
+// console.log(0 || 9)               // 9
+
+// ! - наибольший приоритет
+// console.log(0 || 1 && 4)         // 4
+// console.log(0 && 2 || 8)         // 8
+
+
+// 1. если a = true и b = true, то что вернут выражения:
+//a && b                      true
+// !a && b                    false
+// a && !b                    false
+// !a && !b                   false
+// !(a && b)                  false
+// ! (!a && !b)               false
+
+
+ //2. если a = true и b = true, то что вернут выражения:
+//a || b                // true
+// !a || b              // true
+//a || !b               // true
+// !a || !b             // false
+// !(a || b)             // false
+// a || b                // true
+// !(!a || !b)           // true
+
+ /*3. заданы переменные
+const a = '':                 // false
+const b = 9:                  //  true
+const c = null:*/               // false
+// что вернут выражения
+ // !!(!a || !b && !c)         true
+// !!(a || !b && !c)           false
+// !!(a && !b || c)           false
+// (!a && b && !c)           false
+// !(a || !b && !c)           true
