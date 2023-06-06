@@ -91,7 +91,7 @@ console.log('5px' > 'pxyt')
 // ! (!a && !b)               false
 
 
- //2. если a = true и b = true, то что вернут выражения:
+//2. если a = true и b = true, то что вернут выражения:
 //a || b                // true
 // !a || b              // true
 //a || !b               // true
@@ -100,13 +100,71 @@ console.log('5px' > 'pxyt')
 // a || b                // true
 // !(!a || !b)           // true
 
- /*3. заданы переменные
+/*3. заданы переменные
 const a = '':                 // false
 const b = 9:                  //  true
 const c = null:*/               // false
 // что вернут выражения
- // !!(!a || !b && !c)         true
+// !!(!a || !b && !c)         true
 // !!(a || !b && !c)           false
 // !!(a && !b || c)           false
 // (!a && b && !c)           false
 // !(a || !b && !c)           true
+
+const a1 = ((10 > 20) ? 'true' : 'false')
+console.log(a1)
+
+// оператор нулевого слияния??
+let username = 'Max'                         // undefined null
+const greeting = `Привет,${username ?? 'Гость'}!`;
+console.log(greeting)
+
+
+// Switch
+const checkActionType = (actionType) => {
+    switch (actionType) {
+        case ('FETCH_DATA'):
+            return ('1')
+            break
+        case ('LOADING_DATA'):
+            return ('2')
+        case ('ERROR_DATA'):
+            return ('3')
+        case ('GET_CURRENT_LOCATION'):
+            return ('4')
+        case ('ADD_NOTE'):
+            return ('5')
+
+        default:
+            return ('Дефолтное состояние ничего не делаем')
+    }
+}
+console.log(checkActionType('LOADING_DATA'))
+
+const getDiscount = (userStatus) => {
+    switch (userStatus) {
+        case 'vip':
+            return ('25%')
+        case 'privileged':
+            return ('15%')
+        case 'clubMember':
+            return ('5%')
+        default:
+            return ('0%')
+    }
+}
+console.log(getDiscount('switch'))
+
+// циклы
+// map
+const arr = [1, 2, 3, 4, 5, 6, 7]
+const res = arr.map((element, index, array) => {
+    console.log('element', `${element}  Что нибудь`)
+    console.log('index', index)
+   // console.log('array', array)
+    console.log('=================')
+})
+console.log(res)
+
+const res1 = arr.filter((el) => el > 3)
+console.log(res1)
