@@ -135,7 +135,7 @@ userCopy2.address.city = 'Manchester'
 
 // методы объектов
 
-const harryPotter={
+const harryPotter = {
     name: 'Гарри Потер',
     gender: 'мужской',
     age: 17,
@@ -154,7 +154,61 @@ const harryPotter={
 // Object.freeze()
 
 // 1. С помощью какого метода можно достать все -> ключи в объекте ?   -> что вернёт ?
+const keys = Object.keys(harryPotter)
+// console.log(keys)
+// console.log(Object.keys(harryPotter))
+
+
 // 2. С помощью какого метода можно достать все -> значения в объекте? -> что вернёт ?
+const values = Object.values(harryPotter)
+// console.log(values)
+// console.log(Object.values(harryPotter))
+
+
 // 3. Какой ещё есть метод -> используй его                             -> что вернёт ?
+const entries = Object.entries(harryPotter)
+// console.log(entries)                               //массив массивов
+// console.log(Object.entries(harryPotter))
+
+// деструктуризация
+
+const newUserDP = {
+    name: 'John',
+    age: 30,
+    address: {
+        city: 'London',
+        country: 'UK',
+        coordinates: {
+            latitude: 51.5074,
+            longitude: -0.1278
+        }
+    },
+    preferences: {
+        theme: 'light',
+        fontSize: 14,
+        notification: {
+            email: true,
+            sms: false
+        }
+    }
+}
+//const {name, age, address, preferences} = newUserDP
+// const name = newUseDP.name
+// const age = newUseDP.age
+// const address = newUseDP.address
+// const preferences = newUseDP.preferences
+//console.log(newUserDP.preferences)
+
+
+//console.log(name, age, address, preferences)
+
+const {name, age, ...restProps} = newUserDP                    // rest -- копирует
+//console.log(restProps)
+
+const {email, sms} = newUserDP.preferences.notification
+//console.log(email, sms)
+
+const {theme} = newUserDP.preferences
+console.log(theme)
 
 
