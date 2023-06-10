@@ -209,6 +209,20 @@ const {email, sms} = newUserDP.preferences.notification
 //console.log(email, sms)
 
 const {theme} = newUserDP.preferences
-console.log(theme)
+//console.log(theme)
+
+// lat, long -------- с присвоением
+const {latitude: lat, longitude: long} = newUserDP.address.coordinates
+//console.log(lat, long)
 
 
+const getValues = (obj) => {
+    const {name, age, ...rest} = obj
+    return name, age, rest
+}
+// console.log(getValues(newUserDP))
+
+const getValues1 = ({name, age, ...rest}) => {
+    return name, age, rest
+}
+//console.log(getValues1(newUserDP))
