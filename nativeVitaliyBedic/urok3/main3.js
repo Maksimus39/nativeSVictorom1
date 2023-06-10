@@ -36,8 +36,46 @@ const [, , , num4] = arr
 //console.log(num4)
 
 // что сидит в rest в объекте и в массиве?
-const [,  ...rest] = arr
+const [, ...rest] = arr
+
+const obj = {
+    name: 'Max',
+    age: 39
+}
+const {...rest1} = obj
+// console.log(rest)
+// console.log(rest1)                              // этот метод неудобен тем что он зависит от количества запятых массива
+
+const func1 = (...rest3) => {
+    // console.log(rest3)
+}
+func1(1, 2, 3, 4, 5)
+
+// 5. сравнение массивов
+const newArr = arr
+//newArr[0] = 100200
+//console.log(newArr === arr)
+
+const newCopy = [...arr]
+newCopy[0] = 100200
+// console.log(newCopy[0])
+// console.log(arr[0])
+// console.log(newArr[0])
+
+// 6. Базовые операции с массивами (добавление , удаление)
+// push, unshift
+
+const resPush = arr.push(1000)
+const resUnshift = arr.unshift(2000)
+// console.log(resPush)                              // добавляет в конец
+// console.log(resUnshift)                           // добавляет в начало
+// console.log(arr)
+
+// pop, shift
+arr.pop()
+const resPop = arr.pop()
+console.log(arr)          // удаление последнего и возврат полученного массива
+console.log(resPop)       // показывает что удалили
 
 
-
-console.log(rest)                              // этот метод неудобен тем что он зависит от количества запятых массива
+// какая операция затратнее.
