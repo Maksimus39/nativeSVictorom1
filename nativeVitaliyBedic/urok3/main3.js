@@ -72,10 +72,14 @@ const resUnshift = arr.unshift(2000)
 // console.log(arr)
 
 // pop, shift
+arr.shift()                // удаляет первый и возвращает полученный
+const resShift=arr.shift() // вывод первого удалённого значения из массива
+console.log(resShift)
 arr.pop()
 const resPop = arr.pop()
 console.log(arr)          // удаление последнего и возврат полученного массива
 console.log(resPop)       // показывает что удалили
 
 
-// какая операция затратнее.
+// какая операция затратнее, добавление так как всем придётся поменять индексы
+
