@@ -15,11 +15,11 @@ console.log(myNumber); // значение переменной num измени
 
 // Переменную с const нельзя изменять.
 const yourNumber = 5;
-yourNumber = 6;
+//yourNumber = 6;
 console.log(yourNumber); // будет ошибка
 
 // По этой же логике константу нельзя создавать пустой.
-const age;
+const age = 10;
 console.log(age); // будет ошибка
 let abc;
 console.log(abc); // значение будет undefined
@@ -28,8 +28,8 @@ console.log(abc); // значение будет undefined
 // не можем переопределить эту переменную новым значением, но мы можем
 // изменять свойства объекта.
 
-const user = { name: 'Pavel', age: 25 };
-user = { name: 'Alex', age: 28 }; // TypeError: Assignment to constant variable.
+const user = {name: 'Pavel', age: 25};
+//user = {name: 'Alex', age: 28}; // TypeError: Assignment to constant variable.
 user.age = 26; // это допустимо
 
 //                                           Отличия let и var
@@ -50,21 +50,22 @@ console.log(num); // с let будет ошибка, так как нельзя 
     let num = 1;
     console.log(num); // тут переменная будет видна
 }
-    console.log(num); // тут уже будет ошибка
+console.log(num); // тут уже будет ошибка
 
 
 {
     var num = 1;
     console.log(num); // тут переменная будет видна
 }
-    console.log(num); // и тут тоже переменная будет видна
+console.log(num); // и тут тоже переменная будет видна
 
 
-    function func() {
+function func() {
     var num = 1;
     console.log(num); // тут переменная будет видна
 }
-    console.log(num); // тут уже будет ошибка
+
+console.log(num); // тут уже будет ошибка
 
 
 //                                                Hoisting
@@ -77,7 +78,7 @@ var x = 10; // undefined
 foo();
 
 function foo() {
-  console.log('Привет, я функция!');
+    console.log('Привет, я функция!');
 }
 
 //                                                Типы данных
@@ -95,14 +96,15 @@ function foo() {
 
 // typeof - оператор, который помогает определить тип данных переменной
 
-console.log(typeof Infinity); 
-console.log(typeof null); 
-console.log(typeof NaN); 
-console.log(typeof function() {}); 
-console.log(typeof []);
-console.log(typeof (typeof "hello"));
-console.log(Array.isArray([]));
-console.log(Array.isArray({}));
+console.log(typeof Infinity);                       // number
+console.log(typeof null);                            // object
+console.log(typeof NaN);                               // number
+console.log(typeof function () {                       // function
+});
+console.log(typeof []);                                // объект
+console.log(typeof (typeof "hello"));                  // string
+console.log(Array.isArray([]));                    // boolean true
+console.log(Array.isArray({}));                    // false
 
 
 // Операторы - математические, сравнения, логические и условные 
@@ -136,8 +138,6 @@ let sms = `My name is ${name} and I'm ${agee} years old`;
 console.log(sms); // 'My name is John and I'm
 
 
-
-
 let newAge = "30"
 console.log(+newAge)
 console.log(Number(newAge))
@@ -160,32 +160,31 @@ console.log("A" - "B" + 2)
 
 
 // == (нестрогое равно) и === (строгое равно)
- 
+
 // == - сравниваются данные и идет преобразование
 // === - учитывает тип данных при сравнении
 
 
 // falsy значения
-    
 
 
 /*
 1. Что вернут данные выражения?
  */
 
-console.log(10 == '10');  
-console.log(10 === '10'); 
+console.log(10 == '10');
+console.log(10 === '10');
 
-console.log(true == 1); 
-console.log(false === 0); 
-console.log([] == ''); 
-console.log({} == ''); 
-console.log(10 > 10);  
-console.log(5 >= 5); 
+console.log(true == 1);
+console.log(false === 0);
+console.log([] == '');
+console.log({} == '');
+console.log(10 > 10);
+console.log(5 >= 5);
 
-console.log('5px' > 3);  
-console.log('A' > 'a');  
-console.log('B' < 'b'); 
+console.log('5px' > 3);
+console.log('A' > 'a');
+console.log('B' < 'b');
 
 //                                                  Логические операторы
 // &&  - и
@@ -210,8 +209,8 @@ console.log('B' < 'b');
 //return result || "No data"
 
 
-console.log(0 || 1 && 4)    
-console.log(0 && 2 || 8)    
+console.log(0 || 1 && 4)
+console.log(0 && 2 || 8)
 
 /*
 1. Если a = true и b = true, то что вернут выражения:
@@ -220,11 +219,11 @@ console.log(0 && 2 || 8)
 const a = true
 const b = true
 
-console.log(a && b)        
-console.log(!a && b)     
-console.log(a && !b)      
-console.log(!(a && b))   
-console.log(!(!a && !b))   
+console.log(a && b)
+console.log(!a && b)
+console.log(a && !b)
+console.log(!(a && b))
+console.log(!(!a && !b))
 
 
 // 2. Если a = true и b = true, то что вернут выражения:
@@ -238,8 +237,6 @@ console.log(!(!a && !b))
 // console.log(!(a || b))   
 // console.log(a || b)       
 // console.log(!(!a || !b))  
-
-
 
 
 // Инкремент и декремент
@@ -274,12 +271,10 @@ const productPrice = 50;
 // Если возраст больше 60 лет, выведите сообщение "Вы уже на пенсии!".
 
 
-
-
-// Напишите функцию, которая проверяет, вошел ли пользователь в систему, и выводит соответствующее сообщение в 
+// Напишите функцию, которая проверяет, вошел ли пользователь в систему, и выводит соответствующее сообщение в
 // консоль, если isLoggedIn - true, то "Вы вошли в систему", иначе - "Пожалуйста, войдите в систему"
 const checkLoginStatus = (isLoggedIn) => {
- 
+
 }
 
 checkLoginStatus(true);
@@ -289,7 +284,7 @@ checkLoginStatus(true);
 // Напишите функцию, которая будет проверять значение переменной genre, и выводить в консоль информацию о фильме в 
 // зависимости от его жанра.
 function getFilmInfo(genre) {
-  
+
 }
 
 getFilmInfo('drama');
@@ -314,8 +309,8 @@ getFilmInfo('drama');
 //     result = result + i;
 // } while (i < 5);
 
-for(let i = 0; i < 5; i++) {
-  
+for (let i = 0; i < 5; i++) {
+
 }
 
 // 1. Выведи в консоль все целые числа от 10 до 1 в обратном порядке:
@@ -326,7 +321,7 @@ for(let i = 0; i < 5; i++) {
 
 // 2. Вывести в консоль таблицу умножения на 7 в виде: "7 x 1 = 7", "7 x 2 = 14", ..., "7 x 10 = 70".
 // for () {
-   
+
 // }
 
 
@@ -338,7 +333,7 @@ for(let i = 0; i < 5; i++) {
 
 // 4. Вывести в консоль числа от 0 до 100 - каждое пятое число.
 // for () {
-   
+
 // }
 
 
@@ -357,23 +352,23 @@ for(let i = 0; i < 5; i++) {
 // выражения. Функция, определенная таким образом, может быть вызвана до ее определения, благодаря механизму 
 // hoisting.
 function sum(a, b) {
-  return a + b;
+    return a + b;
 }
 
-console.log(sum(2, 3)); 
+console.log(sum(2, 3));
 
 // 2. Function Expression-это способ определения функции, когда функция создается внутри выражения, например, 
 // присваивания переменной. Функцию, определенную таким образом, можно вызвать только после ее определения.
-const sum = function(a, b) {
+const sum = function (a, b) {
     return a + b;
-  };
-  
-  console.log(sum(2, 3));
+};
+
+console.log(sum(2, 3));
 
 // 3. Arrow Function-это новый способ определения функций, добавленный в ECMAScript 6. 
 // Стрелочные функции имеют более компактный синтаксис и автоматически привязывают this к текущей области видимости.
 const sum = (a, b) => {
-   return a + b
+    return a + b
 };
 
 console.log(sum(2, 3));
@@ -389,9 +384,9 @@ console.log(sum2(2, 3));
 // Значение по умолчанию для параметров
 function sum(a = 10, b = 7) {
     return a + b;
-  }
-  
-  console.log(sum(10, 2)); 
+}
+
+console.log(sum(10, 2));
 
 // Про arguments
 // arguments - это псевдомассив в JavaScript, который содержит все аргументы, переданные в функцию.
@@ -400,19 +395,19 @@ function sum(a = 10, b = 7) {
 // 1
 function greet(name, message) {
     if (arguments.length === 1) {
-      message = 'Привет';
+        message = 'Привет';
     }
     console.log(`${message}, ${name}!`);
-  }
-  
+}
+
 greet('Вася'); // Привет, Вася!
 greet('Петя', 'Здравствуйте'); // Здравствуйте, Петя!
 
 // 2
 function sayHi() {
     for (let i = 0; i < arguments.length; i++) {
-      console.log( "Привет, " + arguments[i] );
+        console.log("Привет, " + arguments[i]);
     }
-  }
-  
+}
+
 sayHi("Винни", "Пятачок");
