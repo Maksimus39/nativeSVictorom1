@@ -158,12 +158,12 @@ const numbers = [1, 2, 3, 4, 5]
 
 
 const resReduce = numbers.reduce((acc, value, index, array) => {
-    console.log('acc----', acc )
-    console.log('value----', value)
-    console.log('index----', index)
-    console.log('array----', array)
-    return (acc + value)
-    console.log('-----------------------------')
+    // console.log('acc----', acc )
+    // console.log('value----', value)
+    // console.log('index----', index)
+    // console.log('array----', array)
+    // return (acc + value)
+    // console.log('-----------------------------')
 }, 10)
 
 
