@@ -150,8 +150,6 @@ const filteredNames = names.filter((value, index, array) => value[0] === 'v')  /
 // console.log(names)
 
 
-
-
 // reduce
 const numbers = [1, 2, 3, 4, 5]
 //const resReduce=numbers.reduce((колбек)=>{},начальное значение)
@@ -167,14 +165,54 @@ const resReduce = numbers.reduce((acc, value, index, array) => {
 }, 10)
 
 
-
-
-
-
-
-
 // 8. методы изменяющие исходный массив(мутирующие)
 // push, pop, shift, unshift, reverse, fill, splice, sort
 
 //----------------------------------------Задачи-----------------------------------------------------------//
 
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+const res1 = nums.reduce((acc, item) => acc + item, '')
+
+// console.log(res1)
+// console.log(typeof res1)
+
+//выбрать чётные вычислить их квадраты и отобрать из них числа больше 50
+//const numbers= [1,2,3,4,5,6,7,8,9,10]
+
+const checkNumIsEven = (num) => {
+    return num % 2 === 0
+}
+//console.log(checkNumIsEven(100))
+
+const transformNumSquare = (num) => {
+    //return num **2
+    //return num * num
+    return Math.pow(num, 2)
+}
+//console.log(transformNumSquare(50))
+
+const checkNumIsGreaterThanAnotherNum = (num) => {
+    return num > 50
+}
+//console.log(checkNumIsGreaterThanAnotherNum(10))
+
+
+// решение через map/filter
+// const result = numbers
+//     .filter(checkNumIsEven)
+//     .map(transformNumSquare)
+//     .filter(checkNumIsGreaterThanAnotherNum)
+//console.log(result)
+
+
+
+
+// решение с помощью reduce
+const result = numbers.reduce((acc, value)=>{
+    if(value % 2 === 0) {
+       const squared = transformNumSquare(value)
+        return squared
+    }
+},[])
+console.log(result)
