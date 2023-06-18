@@ -38,8 +38,8 @@ var num = 10;
 var num = 15;
 console.log(num); // переменная просто перезапишется и будет 15
 
-let num = 10;
-let num = 15;
+//let num = 10;
+//let num = 15;
 console.log(num); // с let будет ошибка, так как нельзя создавать переменные с одинаковым именем
 
 
@@ -143,12 +143,12 @@ console.log(+newAge)
 console.log(Number(newAge))
 
 
-console.log(1 + "2" + "2")
-console.log(1 + +"2" + "2")
-console.log(1 + -"1" + "2")
-console.log(+"1" + "1" + "2")
-console.log("A" - "B" + "2")
-console.log("A" - "B" + 2)
+console.log(1 + "2" + "2")     // 122
+console.log(1 + +"2" + "2")   // 32
+console.log(1 + -"1" + "2")   // 02
+console.log(+"1" + "1" + "2") // 112
+console.log("A" - "B" + "2") // NaN2
+console.log("A" - "B" + 2)   // NaN
 
 
 //                                              Операторы сравнения
@@ -166,25 +166,29 @@ console.log("A" - "B" + 2)
 
 
 // falsy значения
-
-
+false
+''
+undefined
+null
+NaN
+0
 /*
 1. Что вернут данные выражения?
  */
 
-console.log(10 == '10');
-console.log(10 === '10');
+console.log(10 == '10');// true
+console.log(10 === '10');// false
 
-console.log(true == 1);
-console.log(false === 0);
-console.log([] == '');
-console.log({} == '');
-console.log(10 > 10);
-console.log(5 >= 5);
+console.log(true == 1);// true
+console.log(false === 0);// false
+console.log([] == '');// true
+console.log({} == '');// false
+console.log(10 > 10);// false
+console.log(5 >= 5);// true
 
-console.log('5px' > 3);
-console.log('A' > 'a');
-console.log('B' < 'b');
+console.log('5px' > 3); // false
+console.log('A' > 'a'); // false
+console.log('B' < 'b'); // true
 
 //                                                  Логические операторы
 // &&  - и
@@ -209,8 +213,8 @@ console.log('B' < 'b');
 //return result || "No data"
 
 
-console.log(0 || 1 && 4)
-console.log(0 && 2 || 8)
+console.log(0 || 1 && 4)//4
+console.log(0 && 2 || 8)//2
 
 /*
 1. Если a = true и b = true, то что вернут выражения:
@@ -219,25 +223,27 @@ console.log(0 && 2 || 8)
 const a = true
 const b = true
 
-console.log(a && b)
-console.log(!a && b)
-console.log(a && !b)
-console.log(!(a && b))
-console.log(!(!a && !b))
+console.log(a && b)// b
+console.log(!a && b)// false
+console.log(a && !b)// false
+console.log(!(a && b))// false
+console.log(!(!a && !b)) // true
 
 
 // 2. Если a = true и b = true, то что вернут выражения:
-// const a = true
-// const b = true
+const a = true
+const b = true
 
-// console.log(a || b)       
-// console.log(!a || b)      
-// console.log(a || !b)     
-// console.log(!a || !b)     
-// console.log(!(a || b))   
-// console.log(a || b)       
-// console.log(!(!a || !b))  
+console.log(a || b)// true a
+console.log(!a || b)//  b true
+console.log(a || !b)// a true
+console.log(!a || !b)// false
+console.log(!(a || b))// false
+console.log(a || b)// true
+console.log(!(!a || !b))// true
 
+//a || ! - первое true
+// a && !b - true && false = false
 
 // Инкремент и декремент
 let num = 5
@@ -259,9 +265,14 @@ const productPrice = 50;
 
 
 // if else
-
+if (userBalance > productPrice) {
+    console.log('true');
+} else {
+    console.log('false')
+}
 
 // Тернарный оператор
+const canBuy = (userBalance > productPrice) ? console.log('true') : console.log('false')
 
 
 // Также возможно использование множественных тернарных операций.
@@ -269,14 +280,21 @@ const productPrice = 50;
 // Если возраст меньше 18 лет, выведите сообщение "Вы еще молоды, вам нужно учиться!".
 // Если возраст от 18 до 60 лет включительно, выведите сообщение "Вам еще работать и работать!".
 // Если возраст больше 60 лет, выведите сообщение "Вы уже на пенсии!".
+const muAge = 40
+const message = muAge >= 18 && muAge <= 60 ? console.log('вы ещё молоды, вам нужно учиться') :
+    muAge <= 60 ? console.log('Вам ещё работать и работать') : console.log('Вы уже на пенсии');
+console.log(message)
 
 
 // Напишите функцию, которая проверяет, вошел ли пользователь в систему, и выводит соответствующее сообщение в
 // консоль, если isLoggedIn - true, то "Вы вошли в систему", иначе - "Пожалуйста, войдите в систему"
 const checkLoginStatus = (isLoggedIn) => {
-
+    if (isLoggedIn === true) {
+        console.log('вы вошли в систему')
+    } else {
+        console.log("Пожалуйста, войдите в систему")
+    }
 }
-
 checkLoginStatus(true);
 
 
@@ -284,7 +302,18 @@ checkLoginStatus(true);
 // Напишите функцию, которая будет проверять значение переменной genre, и выводить в консоль информацию о фильме в 
 // зависимости от его жанра.
 function getFilmInfo(genre) {
-
+    switch (genre) {
+        case 'drama': {
+            console.log('drama')
+            break
+        }
+        case 'comedy': {
+            console.log('comedy')
+            break
+        }
+        default:
+            console.log('no info')
+    }
 }
 
 getFilmInfo('drama');
@@ -314,27 +343,30 @@ for (let i = 0; i < 5; i++) {
 }
 
 // 1. Выведи в консоль все целые числа от 10 до 1 в обратном порядке:
-// for () {
-//   console.log(i);
+// for (let i = 10; i >= 1; i--) {
+//     console.log(i);
 // }
 
 
 // 2. Вывести в консоль таблицу умножения на 7 в виде: "7 x 1 = 7", "7 x 2 = 14", ..., "7 x 10 = 70".
-// for () {
-
-// }
+for (let i = 1; i <= 10; i++) {
+    let a = 7
+    console.log(`${a}*${i}=${i * a}`)
+}
 
 
 // 3. Вывести в консоль все нечетные числа от 1 до 20.
-// for () {
-
-// }
+for (let i = 1; i < 20; i++) {
+    if (i % 2 != 0) {
+        console.log(i)
+    }
+}
 
 
 // 4. Вывести в консоль числа от 0 до 100 - каждое пятое число.
-// for () {
-
-// }
+for (let i=5; i<=100; i+5) {
+    console.log(i)
+}
 
 
 //                                                 Функции
