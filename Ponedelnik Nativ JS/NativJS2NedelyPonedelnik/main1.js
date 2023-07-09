@@ -34,86 +34,100 @@ let students = [
 // Сегодняшнее занятие это методы полифилов которые заменяют методы массивов. -------------------------------------------------------------------------------------------------------------
 
 
-// map ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// map---------------------------------------------------------------------------------------------------------------
+
 const getNames = (array) => {
     const result = []
-    const elMapFn = (st) => st.name
+    const getValuesForResult = (el) => el.name
     for (let i = 0; i < array.length; i++) {
-        const newValue = elMapFn(array[i])
-        result[i] = newValue
+        result[i] = getValuesForResult(array[i])
     }
     return result
 }
-console.log(students.map(st => st.name))
-console.log(getNames(students))
+//console.log(getNames(students))
 
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-const getSimpleStudents = (array) => {
-    const result = []                                                  // вывести новый массив
-    const elMapFn = (st) => ({name: st.name, scores: st.scores})      // условие в поставленной функции
-    for (let i = 0; i < array.length; i++) {                          // тело функции её работы
-        const newValue = elMapFn(array[i])
-        result[i] = newValue
-    }
-    return result
-}
-console.log(getSimpleStudents(students))                         // вывод результата в консоль
-
-// самодельный метод map -----------------------------------------------------------------------------------------------------------------------------------------------------
-
-const selfMadeMap = (array, elMapFn) => {
+const getUpdatedStudents = (array) => {
     const result = []
-    for (let i = 0; i < array.length; i++) {                          // тело функции её работы
-        const newValue = elMapFn(array[i])
-        result[i] = newValue
+    const getValuesForResult = (el) => ({...el, isStudents: true})
+    for (let i = 0; i < array.length; i++) {
+        result[i] = getValuesForResult(array[i])
     }
     return result
 }
-console.log(students.map((st) => ({name: st.name, scores: st.scores})))
-console.log(selfMadeMap(students, (st) => ({name: st.name, scores: st.scores})))
+//console.log(getUpdatedStudents(students))
 
-// filter самодельный ---------------------------------------------------------------------------------------------------------------------------------------
-
-const selfMadeFilter = (array, conditionFn) => {  // true || false
+const getMappedArray = (array, func) => {
     const result = []
     for (let i = 0; i < array.length; i++) {
-        if (conditionFn(array[i]) === true) {
+        result[i] = func(array[i])
+    }
+    return result
+}
+console.log(getMappedArray(students, (el) => el.name))
+console.log(getMappedArray(students, (el) => ({...el, isStudents: true})))
+
+const xxl = (el) => el.name
+console.log(students.map(xxl))
+
+
+console.log(students.map((el) => el.name))
+
+//filter------------------------------------------------------------------------
+
+const getFilteredArray = (array, func) => {
+    const result = []
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i]) === true) {
             result.push(array[i])
         }
     }
     return result
 }
-console.log(students.filter(st => st.scores >= 100))                                         // это метод filter с условием
-console.log(selfMadeFilter(students, (st => st.scores >= 100)))               //  а это самодельный метод filter
+console.log(getFilteredArray(students, (el) => el.name >= 21))
+console.log(students.filter(st => st.age >= 21))
+console.log(students.concat({}))
 
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-// воспроизведение работы метода push -----------------------------------------------------------------------------------------------------------------------------
-const selfMadePush = (array, ...els) => {              // ...els - рест оператор он раскукоживает функцию и остальные параметры
-    console.log(els)
-    for (let i = 0; i < els.length; i++) {
-        array[array.length] = els[i]
+const myRevers = (array) => {
+    for (let i = 0; i < Math.floor(array.length / 2); i++) {
+        let temp = array[i]
+        array[i] = array[array.length - 1 - i]
+        array[array.length - 1 - i] = temp
     }
-    const result = [...array, ...els]
-    return result.length
+    return array
 }
-const arr = [1, 2, 3, 4, 5]
-//console.log(selfMadePush(arr, 6, 7, 8))
-console.log(arr.push(6, 7, 8))
-console.log(arr)
+console.log(myRevers(students))
 
-const selfMadeIncludes = (array, value) => {
+const mySlice = (array, startIndex, endIndex) => {
+    const result = []
+    for (let i = startIndex; i < endIndex; i++) {
+        result.push(array[i])
+    }
+    return result
+}
+console.log(mySlice(students, 1, 3))
+
+const myIncludes = (array, item) => {
+    let result = false
     for (let i = 0; i < array.length; i++) {
-        if (array[i] === value){
-            return true
+        if (array[i] === item) {
+            result = true
+            break
         }
     }
-    return false
+    return result
 }
-console.log(arr.includes(4))                                 // это вызов метода массива через точку
-console.log(selfMadeIncludes(arr, 4))         // это самодельный вызов аналогичного метода
+console.log(myIncludes(students, 1))
 
+const myIndexOf = (array, item) => {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === item) {
+            return i
+        }
+    }
+    return -1
+}
+console.log(myIndexOf(students, students[0]))
 
-// теперь зайти на сайт mdn и повторить какой-нибудь метод массива
+console.log([1, 2, 3[[3, 4]], 5].flat())
+
